@@ -49,7 +49,7 @@ server.get('/today', async (req, res)=>{
 });
 
 const pronostico = (data) =>{
-
+    
 }
 
 server.get('/other', async (req, res)=>{
