@@ -1,10 +1,14 @@
 
 import './App.css';
+import Home from './components/Home';
+import Pronostico from './components/Pronostico';
 
 function App() {
+
   return (
     <div className="App">
-      <h1>funcionando</h1>
+      <Home />
+      <Pronostico />
     </div>
   );
 }
