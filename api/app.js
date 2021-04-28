@@ -88,8 +88,8 @@ const pronostico = (data) =>{
 
         clima.push({
             dia:newObj[element].clima[0].dia,
-            max: max,
-            min: min,
+            max: `${Math.round(max)}ºC`,
+            min: `${Math.round(min)}ºC`,
             img:newObj[element].clima[0].img
 
         })

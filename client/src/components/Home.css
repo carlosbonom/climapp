@@ -1,0 +1,17 @@
+.containerHome{
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.tempContent{
+    width: 10%;
+    text-align: center;
+}
+
+.containerHomeTemp{
+    display: flex;
+    justify-content: space-around;
+}
