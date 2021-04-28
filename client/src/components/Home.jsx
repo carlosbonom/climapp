@@ -22,9 +22,10 @@ const Home = () =>{
     },[])
 
     return(
-        <>
+       
+        <div className='containerHome'>
             <h1>Santiago, Chile</h1>
-            <div className='containerHome'>
+            <div className='containerTemp2'>
                 <div className='tempContent'>
                     <div>
                         <h2>{clima.dia}</h2>
@@ -47,10 +48,12 @@ const Home = () =>{
                     <h4>Humedad: {clima.humedad}</h4>
                     <h4>Presión: {clima.presion}</h4>
                 </div>
-
             </div>
             
-        </>
+
+        </div>
+            
+       
     )
 
 }

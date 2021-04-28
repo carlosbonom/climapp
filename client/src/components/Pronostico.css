@@ -7,6 +7,8 @@
 .containerclima{
     width: 10%;
     text-align: center;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .containerTemp{

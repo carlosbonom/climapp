@@ -1,9 +1,18 @@
 .containerHome{
     height: 100vh;
+}
+
+
+
+.containerTemp2{
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    margin-left: 10%;
+    margin-top: 10%;
+    width: 80%;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .tempContent{
