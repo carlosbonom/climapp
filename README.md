@@ -8,7 +8,7 @@ npm install -g nodemon
 
 # Correr api
 
-_ en laa carpeta "api" ejecutar:
+_en laa carpeta "api" ejecutar:_
 ```
 npm install
 npm start
