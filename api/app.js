@@ -25,6 +25,8 @@ server.get('/', (req, res)=>{
     res.send('back de climAPP')
 });
 
+
+//Trae solo el dia de hoy
 server.get('/today', async (req, res)=>{
 
     try{
@@ -48,14 +50,62 @@ server.get('/today', async (req, res)=>{
     
 });
 
+
+//Busca la maxima y la minima
 const pronostico = (data) =>{
+    let newObj = {}
+    let clima = []
+
+    //Agrupo por fechas para visualizar mejor 
+    data.forEach(ele =>{
+        if(!newObj.hasOwnProperty(`dia${ele.dt_txt.slice(0,10)}`)){
+            newObj[`dia${ele.dt_txt.slice(0,10)}`]={
+                clima:[]
+            }
+        }
+        newObj[`dia${ele.dt_txt.slice(0,10)}`].clima.push({
+            dia: ele.dt_txt.slice(0,10).split('-').reverse().join('/'),
+            max:ele.main.temp_max,
+            min:ele.main.temp_min,
+            img:`http://openweathermap.org/img/wn/${ele.weather[0].icon}.png`
+        })
+
+    })
+
+    for(const element in newObj){
+        let max = 0;
+        let min = 0;
+
+        for (let i = 0; i < newObj[element].clima.length; i++) {
+            if(newObj[element].clima[i].max> max ){
+                max = newObj[element].clima[i].max;
+            }
+            if(newObj[element].clima[i].min< min || min === 0){
+                min = newObj[element].clima[i].min
+            }
+            
+        }
+
+        clima.push({
+            dia:newObj[element].clima[0].dia,
+            max: max,
+            min: min,
+            img:newObj[element].clima[0].img
+
+        })
+        
+    }
+
+
     
+    return {pronostico: clima };
 }
 
+//Trae los proximo 5 dias
 server.get('/other', async (req, res)=>{
     try{
         const {data} = await Axios.get(`${urlApi}forecast?q=${city}&lang=es&units=metric&appid=${key}`)
-
+        res.json(pronostico(data.list))
     }catch(err){
         res.status(400).json({
             message:'error',
@@ -64,6 +114,8 @@ server.get('/other', async (req, res)=>{
     }
 })
 
+
+//Levanta el server
 server.listen(PORT,()=>{
     console.log(`corriendo en puerto: ${PORT}`);
 });

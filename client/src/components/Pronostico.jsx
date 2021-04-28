@@ -1,6 +1,11 @@
 import React from 'react';
 
 const Pronostico =()=>{
+
+    const [pronostico, setPronostico] = useState({});
+
+
+    
     return(
         <div>
             <div>
